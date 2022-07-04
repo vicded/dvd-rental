@@ -3,7 +3,20 @@ from .models import Customer
 
 
 class CustomerSerializer(serializers.ModelSerializer):
+    """
+    Creates a Serializer class for the Customer model.
+
+    :param
+    serializers.ModelSerializer (Class):  Class model for customer.
+    """
     class Meta:
+        """
+        Provides meta data for the Customer serializer.
+
+        :var
+        model: Customer model.
+        fields: the table fields for the Customer table.
+        """
         model = Customer
         fields = [
                     'customer_id',

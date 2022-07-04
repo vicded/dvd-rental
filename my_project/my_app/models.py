@@ -116,7 +116,7 @@ class Category(models.Model):
 class City(models.Model):
     city_id = models.AutoField(primary_key=True)
     city = models.CharField(max_length=50)
-    country = models.ForeignKey('Country', models.DO_NOTHING)
+    country = models.ForeignKey('Country', models.PROTECT)
     last_update = models.DateTimeField()
 
     class Meta:
@@ -140,7 +140,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     email = models.CharField(max_length=50, blank=True, null=True)
-    address = models.ForeignKey(Address, models.DO_NOTHING)
+    address = models.ForeignKey(Address, on_delete=models.PROTECT)
     activebool = models.BooleanField()
     create_date = models.DateField()
     last_update = models.DateTimeField(blank=True, null=True)
@@ -151,7 +151,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return f'Customer {self.customer_id}: {self.first_name} {self.last_name} \t' \
-               f'{self.email} {self.activebool}'
+               f'{self.email} Active: {self.activebool}'
 
 
 class DjangoAdminLog(models.Model):

@@ -8,4 +8,4 @@ from .serializers import CustomerSerializer
 def customer_template(request):
     customers = Customer.objects.all()
     serializer = CustomerSerializer(customers, many=True)
-    return JsonResponse(serializer.data, safe=False)
+    return JsonResponse({'customers': serializer.data})
