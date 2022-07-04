@@ -1,10 +1,11 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import JsonResponse
 
-from .models import Actors
+from .models import Customer
+from .serializers import CustomerSerializer
 
 
 # Create your views here.
-def actor_template(request):
-    return HttpResponse('This is going to be my template')
-
+def customer_template(request):
+    customers = Customer.objects.all()
+    serializer = CustomerSerializer(customers, many=True)
+    return JsonResponse(serializer.data, safe=False)

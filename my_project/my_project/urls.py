@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from my_app.views import actor_template
+from my_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', actor_template),
+    path('customer/', views.customer_template),
 ]
